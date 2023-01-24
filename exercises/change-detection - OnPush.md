@@ -12,7 +12,7 @@ how to optimize our applications runtime performance by using `ChangeDetectionSt
 
 First we will create a component that will help us to debug change detection cycles in our application.
 
-Your task is to create a `DirtyChecksComponent` (and `DirtyChecksModule`) which should serve as a performance debug utility.
+1. Create a `DirtyChecksComponent` (and `DirtyChecksModule`) which should serve as a performance debug utility.
 Whenever the application renders, it should increase a number in its template.
 
 To do so, the component should bind a `renders()` function inside the template which
@@ -28,7 +28,7 @@ For the template use a `<code>` tag with the class `.dirty-checks`.
 ```
 </details>
 
-Afterwards, use the component in the `AppComponents` template and serve the application.
+2. Use the component in the `AppComponents` template and serve the application.
 
 <details>
     <summary>show solution</summary>
@@ -69,7 +69,9 @@ export class DirtyChecksComponent {
 
 ```
 
-Add import in `app.module.ts`:
+</details>
+
+3. Add import in `app.module.ts`:
 
 ```typescript
 // Exercise 3: Include dirty checks module import here.
@@ -77,14 +79,14 @@ Add import in `app.module.ts`:
 import { DirtyChecksComponent } from "./shared/dirty-checks.component";
 ```
 
-And include it.
+And include it in `app.component.ts` component decorator imports
 
 ```typescript
 
   DirtyChecksComponent,
 ```
 
-Add `<dirty-checks>` component in `app.component.ts` template:
+4. Add `<dirty-checks>` component in `app.component.ts` template:
 
 ```html
 template: `
@@ -96,30 +98,25 @@ template: `
 `,
 ```
 
-</details>
-
 ## Evaluate initial state of the application
 
-Serve your app and try to interact with the page. You will see counter always go up.
+1. Serve your app and try to interact with the page. You will see counter always go up.
 Perform different kinds of actions and note how the counter will increase by different amounts.
 
-* navigate
-  * between categories
-  * movie-detail
-* tilt
-* switch dark/light mode
+* [ ] navigate
+  * [ ] between categories
+  * [ ] movie-detail
+* [ ] tilt
+* [ ] switch dark/light mode
 
-## Use `ChangeDetection.OnPush`
+## Use `ChangeDetection.OnPush` in AppComponent
 
 By default, all angular component using `ChangeDetectionStrategy.Default`.
 This means a component will be checked (template bindings will be re-evaluated) every time any action happens on the page.
 This can cause severe performance issues.
 
-You should aim to use `ChangeDetectionStrategy.OnPush` in all your components.
 
-### AppComponent
-
-Let's do one simple but significant change and make our `AppComponent` use `ChangeDetectionStrategy.OnPush` changeDetection
+1. Let's do one simple but significant change and make our `AppComponent` use `ChangeDetectionStrategy.OnPush` changeDetection
 
 <details>
     <summary>Use ChangeDetection OnPush</summary>
@@ -141,21 +138,18 @@ Let's do one simple but significant change and make our `AppComponent` use `Chan
 
 </details>
 
-Serve the application, note how the counter will still increase on any interaction, but the amount it increases is
+2. Serve the application.  
+Note how the counter will still increase on any interaction, but the amount it increases is
 way lower than before. This is because the Component now only re-renders when being on a dirty-path.
 
-### MovieCardComponent
+## Use `ChangeDetection.OnPush` in MovieCardComponent
 
 In the first example we investigated rendering cycles with the `DirtyChecksComponent` & applied `OnPush` in our root component.
 Let's do the same for a `LeafComponent` to get a deeper understanding of rendering cycles in the context of the `ComponentTree`.
 
-* add the `dirty-checks` component to the `MovieCardComponent`s template
-* serve the application, interact with the page and observe the counter in the `MovieCardComponent`
-* apply `ChangeDetectionStrategy.OnPush` to `MovieCardComponent`
-* serve the application, interact with the page and observe the counter in the `MovieCardComponent`
-
+1. Add the `dirty-checks` component to the `MovieCardComponent`s template
 <details>
-    <summary>MovieCardComponent OnPush</summary>
+    <summary>Add dirty check to MovieCardComponent</summary>
 
 ```html
 <!-- movie-card.component.html -->
@@ -168,7 +162,15 @@ Let's do the same for a `LeafComponent` to get a deeper understanding of renderi
     <!-- other template -->
 </div>
 ```
+  
+</details>  
 
+2. Serve the application, interact with the page and observe the counter in the `MovieCardComponent`
+3. Apply `ChangeDetectionStrategy.OnPush` to `MovieCardComponent`   
+
+<details>
+    <summary>MovieCardComponent OnPush</summary>
+  
 ```ts
 // movie-card.component.ts
 import { ChangeDetectionStrategy } from '@angular/core';
@@ -182,17 +184,18 @@ export class MovieCardComponent {}
 
 </details>
 
+4. Serve the application, interact with the page and observe the counter in the `MovieCardComponent`
 
 ## Bonus: more ChangeDetectionStrategy.OnPush
 
-Try to think about other components that would benefit from the `OnPush` `ChangeDetectionStrategy` and apply it.
+1. Try to think about other components that would benefit from the `OnPush` `ChangeDetectionStrategy` and apply it.
 Make sure to first use the `dirty-checks` component in order to measure the improvement.
 
-Feel free to ask questions if anything unexpected happens.
+2. Feel free to ask questions if anything unexpected happens.
 
 ## Bonus: Configure schematics for better CD defaults
 
-You can generate components with `OnPush` by default if you add next content to `angular.json` schematics:
+1. You can generate components with `OnPush` by default if you add next content to `angular.json` schematics:
 
 <details>
     <summary>setup schematics to add OnPush automatically</summary>
