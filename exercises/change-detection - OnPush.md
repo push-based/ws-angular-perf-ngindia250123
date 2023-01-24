@@ -190,7 +190,7 @@ Make sure to first use the `dirty-checks` component in order to measure the impr
 
 Feel free to ask questions if anything unexpected happens.
 
-## Bonus: Schematics Pro Tip
+## Bonus: Configure schematics for better CD defaults
 
 You can generate components with `OnPush` by default if you add next content to `angular.json` schematics:
 
