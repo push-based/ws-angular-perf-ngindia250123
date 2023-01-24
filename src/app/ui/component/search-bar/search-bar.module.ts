@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LetModule } from '@rx-angular/template';
+import { LetModule } from '@rx-angular/template/let';
 import { SvgIconModule } from '../icons/icon.module';
 import { SearchBarComponent } from './search-bar.component';
 
