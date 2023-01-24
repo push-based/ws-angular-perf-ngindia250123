@@ -183,14 +183,14 @@ export class MovieCardComponent {}
 </details>
 
 
-### Bonus: more ChangeDetectionStrategy.OnPush
+## Bonus: more ChangeDetectionStrategy.OnPush
 
 Try to think about other components that would benefit from the `OnPush` `ChangeDetectionStrategy` and apply it.
 Make sure to first use the `dirty-checks` component in order to measure the improvement.
 
 Feel free to ask questions if anything unexpected happens.
 
-### Bonus: Schematics Pro Tip
+## Bonus: Schematics Pro Tip
 
 You can generate components with `OnPush` by default if you add next content to `angular.json` schematics:
 
