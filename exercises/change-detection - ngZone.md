@@ -9,7 +9,7 @@ The goal of this exercise is to give you a deeper understanding of the `ChangeDe
 is connected to `NgZone`. We will learn how to optimize our applications runtime performance by using advanced techniques
 to minimize the `ChangeDetection` cycles of our application.
 
-## TiltDirective
+## Visualize CD of TiltDirective
 
 If not already the case, insert the `dirty-checks` component into the `MovieCardComponent`s template.
 
@@ -60,7 +60,7 @@ This has two reasons:
 
 In the next two exercises we will improve both of those issues. Let's start with refactoring the of the `TiltDirective`.
 
-### No Dirty Marking
+## Avoid Dirty Marking
 
 Let's try to get rid of the parent dirty marking when interacting with the `TiltDirective`.
 We want to use our `rxjs` knowledge in order to streamline the event handling.
@@ -222,7 +222,7 @@ You should note that the `dirty-checks` counter of the `AppComponent` still incr
 Excellent, the first part of our performance improvement was successful. Let's try to not involve our `AppComponent` anymore
 and head to the next exercise.
 
-### No NgZone, No ChangeDetection :-) 
+## Avoid NgZone triggering change detection 
 
 In this task we want to avoid interacting with `NgZone` in order to not trigger any `ChangeDetection` cycle whatsoever.
 Keep in mind, we only want to set a style to a div. We don't need angular to re-render the whole application.
@@ -246,7 +246,7 @@ although it is configured with `ChangeDetectionStrategy.Default`.
 
 Congratulations :-)
 
-### Bonus: try `NgZone#runOutsideAngular`
+## Bonus: Explore the `NgZone#runOutsideAngular` API
 
 There are other approaches on how to get rid of `NgZone`. The strategy of `rx-angular` is to use the original (unpatched)
 versions of the browsers' API.
