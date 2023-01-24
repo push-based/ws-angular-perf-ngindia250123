@@ -10,5 +10,4 @@ Exercise Order:
 * [CD TrackBy](./exercises/change-detection%20-%20trackBy.md)
 * [NgZone](./exercises/change-detection%20-%20ngZone.md)
 * [Performance Tab](./exercises/performance-tab-flame-charts.md)
-* [JS Event Loop](./exercises/event-loop.md)
 * [Network Optimizations](./exercises/network-optimizations.md)
