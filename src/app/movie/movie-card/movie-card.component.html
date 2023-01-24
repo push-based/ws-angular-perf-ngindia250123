@@ -2,7 +2,6 @@
      [tilt]="40"
      (click)="movieClicked()">
 
-  <div>{{ rendered }}</div>
   <img class="movie-image"
        [alt]="movie.title"
        [src]="movie.poster_path | movieImage">

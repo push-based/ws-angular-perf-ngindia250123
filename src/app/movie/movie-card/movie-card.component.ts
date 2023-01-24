@@ -7,11 +7,6 @@ import { MovieModel } from '../movie-model';
   styleUrls: ['./movie-card.component.scss'],
 })
 export class MovieCardComponent implements OnInit {
-  private _rendered = 0;
-
-  get rendered() {
-    return this._rendered++;
-  }
 
   @Input() movie!: MovieModel;
 
